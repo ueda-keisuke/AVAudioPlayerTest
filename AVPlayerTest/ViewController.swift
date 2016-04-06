@@ -55,7 +55,7 @@ class ViewController: UIViewController {
     @IBAction func playAudioInDocumentDirectory(sender: UIButton)
     {
         let documentDirectory = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
-        let filePath = documentDirectory + filename
+        let filePath = documentDirectory + "/" + filename
         let url = NSURL(fileURLWithPath: filePath)
         
         play(url)
@@ -87,7 +87,7 @@ class ViewController: UIViewController {
     func setupAudioRecorder() {
         
         let audio_directory_path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
-        let file_path = "\(audio_directory_path)" + filename
+        let file_path = "\(audio_directory_path)" + "/" + filename
         let url = NSURL(fileURLWithPath: file_path)
         
         let recordSettings: [String: AnyObject] =
