@@ -7,8 +7,19 @@
 //
 
 import UIKit
+import AVFoundation
+
 
 class ViewController: UIViewController {
+    
+    
+    var audioRecorder: AVAudioRecorder?
+    var audioPlayer: AVAudioPlayer?
+    let filename = "audio.m4a"
+    var recording = false
+    
+    @IBOutlet weak var record_button: UIButton!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +31,98 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    @IBAction func playAudioInBundle(sender: UIButton)
+    {
+        if let url = NSBundle.mainBundle().URLForResource("1", withExtension: "m4a")
+        {
+            play(url)
+        }
+    }
+    
+    @IBAction func playAudioInDocumentDirectory(sender: UIButton)
+    {
+        let documentDirectory = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
+        let filePath = documentDirectory + filename
+        let url = NSURL(fileURLWithPath: filePath)
+        
+        play(url)
+    }
+    
+    @IBAction func record(sender: UIButton)
+    {
+        if recording == false
+        {
+            setupAudioRecorder()
+            audioRecorder?.record()
+
+            record_button.setTitle("Stop recording", forState: .Normal)
+
+            recording = true
+        }
+        else
+        {
+            audioRecorder?.stop()
+            record_button.setTitle("Record", forState: .Normal)
+            recording = false
+        }
+    }
+    
+    
+    
+    
+    
+    func setupAudioRecorder() {
+        
+        let audio_directory_path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
+        let file_path = "\(audio_directory_path)" + filename
+        let url = NSURL(fileURLWithPath: file_path)
+        
+        let recordSettings: [String: AnyObject] =
+            [
+                AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
+                AVEncoderAudioQualityKey: AVAudioQuality.Low.rawValue,
+                AVEncoderBitRateKey: 16000,
+                AVNumberOfChannelsKey: 1,
+                AVSampleRateKey: 8000.0,
+                AVLinearPCMBitDepthKey: 8
+        ]
+        
+        do {
+            audioRecorder = try AVAudioRecorder(URL: url, settings: recordSettings)
+        } catch {
+            audioRecorder = nil
+        }
+        
+    }
+    
+    
+    
+    func play(url: NSURL)
+    {
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOfURL: url)
+            audioPlayer?.play()
+        }
+        catch
+        {
+            print("Error loading \(url): \(error)")
+        }
+    }
+    
+    
 
 }
 

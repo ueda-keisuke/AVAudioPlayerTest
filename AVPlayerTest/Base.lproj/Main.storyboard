@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AVPlayerTest" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,8 +16,42 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="asB-A1-Zbi">
+                                <rect key="frame" x="181" y="105" width="239" height="30"/>
+                                <state key="normal" title="Play audio file created by simulator"/>
+                                <connections>
+                                    <action selector="playAudioInBundle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dGD-CO-mcT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MB1-vD-JXt">
+                                <rect key="frame" x="276" y="285" width="49" height="30"/>
+                                <state key="normal" title="Record"/>
+                                <connections>
+                                    <action selector="record:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9qo-wy-D6H"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2uR-82-CU2">
+                                <rect key="frame" x="285" y="465" width="30" height="30"/>
+                                <state key="normal" title="Play"/>
+                                <connections>
+                                    <action selector="playAudioInDocumentDirectory:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eui-b1-1CF"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MB1-vD-JXt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GYj-c5-NSt"/>
+                            <constraint firstItem="asB-A1-Zbi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ui2-d1-DFs"/>
+                            <constraint firstItem="2uR-82-CU2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WUm-0N-w7J"/>
+                            <constraint firstItem="2uR-82-CU2" firstAttribute="top" secondItem="MB1-vD-JXt" secondAttribute="bottom" constant="150" id="ZWM-Nk-G5g"/>
+                            <constraint firstItem="MB1-vD-JXt" firstAttribute="top" secondItem="asB-A1-Zbi" secondAttribute="bottom" constant="150" id="lJj-Uz-RAn"/>
+                            <constraint firstItem="MB1-vD-JXt" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="tiX-NN-oyw"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="record_button" destination="MB1-vD-JXt" id="b73-rf-eop"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
