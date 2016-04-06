@@ -18,8 +18,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="asB-A1-Zbi">
-                                <rect key="frame" x="181" y="105" width="239" height="30"/>
-                                <state key="normal" title="Play audio file created by simulator"/>
+                                <rect key="frame" x="188" y="105" width="224" height="30"/>
+                                <state key="normal" title="Play audio recorded by simulator"/>
                                 <connections>
                                     <action selector="playAudioInBundle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dGD-CO-mcT"/>
                                 </connections>
