@@ -75,6 +75,11 @@ class ViewController: UIViewController {
         else
         {
             audioRecorder?.stop()
+            
+            // added
+            let session = AVAudioSession.sharedInstance()
+            try! session.setActive(false)
+            
             record_button.setTitle("Record", forState: .Normal)
             recording = false
         }
@@ -102,6 +107,12 @@ class ViewController: UIViewController {
         
         do {
             audioRecorder = try AVAudioRecorder(URL: url, settings: recordSettings)
+            
+            // added
+            let session = AVAudioSession.sharedInstance()
+            try session.setCategory(AVAudioSessionCategoryRecord)
+            try session.setActive(true)
+            
         } catch {
             audioRecorder = nil
         }
@@ -114,6 +125,9 @@ class ViewController: UIViewController {
     {
         do {
             audioPlayer = try AVAudioPlayer(contentsOfURL: url)
+            let audioSession = AVAudioSession.sharedInstance()
+            try audioSession.setCategory(AVAudioSessionCategoryAmbient)
+            
             audioPlayer?.play()
         }
         catch
